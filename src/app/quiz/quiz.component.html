@@ -1,0 +1,23 @@
+<h1>Online Quiz Application</h1>
+<div *ngFor="let q of quiz">
+    <form action="/action_page.php">       
+        <p>Question no: {{q.no}}</p>
+        <p>{{q.question}}</p>
+        <div *ngFor="let option of q.options;let i = index">
+            <input type="radio" id={{option.id}} name={{q.no}} value={{option.option}}>
+            <label for={{option}}>{{option.option}}</label>
+            <!-- <p>{{option}}</p> -->
+        </div>
+    </form>
+</div><br>
+<button (click)="test()">Submit</button>
+<h4>Check your results below</h4>
+<div *ngIf="flag">
+    <h4>Results</h4>
+    <p>Your is score is: {{count}}</p>
+    <h4>Quiz Review : </h4>
+    <p>The correct answers are</p>
+    <div *ngFor="let a of answers">
+        <p>{{a.no}}. {{a.answer}}</p>
+    </div>
+</div>
